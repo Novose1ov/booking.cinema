@@ -1,4 +1,8 @@
 import os
+import pandas as pd
+
+
+df = pd.read_csv('data_films.csv')
 
 
 FILMS = []
@@ -16,7 +20,7 @@ class Film:
     def add_to_database(self):
         FILMS.append(self.name)
 
-    def displayBookings(FILMS):
+    def displayFilms(FILMS):
         if FILMS:
             count = 0
             while True:
@@ -44,6 +48,3 @@ Film.add_to_database(film2)
 Film.add_to_database(film3)
 Film.add_to_database(film4)
 Film.add_to_database(film5)
-
-Film.displayBookings(FILMS)
-
