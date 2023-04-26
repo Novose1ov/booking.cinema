@@ -20,7 +20,7 @@ class Table:
             raise ValueError ('DataBaseError. Not found name of table.')
         self.name = name
         
-            
+
     def astypeTable(self) -> None:
         """Функция для правильной типизации данных
         """
@@ -40,11 +40,11 @@ class Table:
         elif self.name == 'sessions':
             # id, time_start, tmie_end, id_film, id_holl, date
             self.table['id'] = self.table['id'].astype(int)
-            self.table['time_start'] = self.table['time_start'].astype(str)
-            self.table['tmie_end'] = self.table['tmie_end'].astype(str)
+            self.table['time_start'] = self.table['time_start'].astype(int)
+            self.table['tmie_end'] = self.table['tmie_end'].astype(int)
             self.table['id_film'] = self.table['id_film'].astype(int)
             self.table['id_holl'] = self.table['id_holl'].astype(int)
-            self.table['date'] = self.table['date'].astype(str)
+            self.table['date'] = self.table['date'].astype(int)
         elif self.name == 'users':
             # id, log, password
             self.table['id'] = self.table['id'].astype(int)
@@ -106,6 +106,20 @@ class Table:
             self.table.to_csv(f'DataBase/{self.name}.csv', index=False)
         except IndexError:
             print('Ячейка не найдена')
+            
+    
+    def get_collection_by_dates(self, date:int) -> list[list[int]]:
+        """По дате возврашает все сеансы из таблицы 'sessions'
+        """
+        if self.name == 'sessions':
+            self.table = pd.read_csv(f'DataBase/{self.name}.csv', sep=',')
+            t_date = self.table[self.table['date'] == date]
+            result = []
+            for i in range(t_date.shape[0]):
+                result.append(list(t_date.iloc[i, :]))
+            return result
+
+        
         
         
 if __name__ == '__main__':
