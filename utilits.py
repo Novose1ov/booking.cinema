@@ -23,7 +23,6 @@ class Tile:
 def draw_tile(list_tiles, num=None, end=18):
     result = ''
     cnt = 0
-    # while len(list_tiles) > 0:
     for i in range(3):
         mask = ''
         for tile in list_tiles:
@@ -35,8 +34,6 @@ def draw_tile(list_tiles, num=None, end=18):
                 print(num)
             mask += tile.tile[i]
         result += mask + '\n'
-        # cnt += 1
-        # result += '\n'
         
     return result
 
