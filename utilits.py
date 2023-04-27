@@ -20,30 +20,54 @@ class Tile:
         self.create_tile()
         
         
-def draw_tile(list_tiles, num):
+def draw_tile(list_tiles, num=None, end=18):
     result = ''
+    cnt = 0
+    # while len(list_tiles) > 0:
     for i in range(3):
         mask = ''
         for tile in list_tiles:
             tile.is_flag(False)
-            list_tiles[num].is_flag(True)
+            try:
+                if num is not None:
+                    list_tiles[num].is_flag(True)
+            except:
+                print(num)
             mask += tile.tile[i]
         result += mask + '\n'
+        # cnt += 1
+        # result += '\n'
+        
     return result
 
-###########################################################
+
+def columns_tile(list_tiles, end=2):
+    count = 0
+    while True:
+        key = input()
+        for i in range(len(list_tiles)):
+            if (count % len(list_tiles)) == i:
+                os.system('CLS')
+                num = count % len(list_tiles)
+                start = 0
+                int_num = num // end
+                new_list = list_tiles.copy()
+                while len(new_list) > 0:
+                    if len(new_list) < end:
+                        new_list = list_tiles[start*end : len(new_list)]
+                    else:
+                        new_list = list_tiles[start*end : end*(start+1)]
+                    if int_num == start:
+                        print(draw_tile(new_list, num % end))
+                    else:
+                        print(draw_tile(new_list))
+                    if len(new_list) < end:
+                        break
+                    start += 1
+                key = ''
+        count += 1
 
 
-list_tiles = [Tile('dsfsdfsdfsdsf'), Tile('sdgsdgsgdssgsgsdg'), Tile('fsdf')]
-count = 0
+list_tiles = [Tile('dsfsdfsdfsdsf'), Tile('sdgsdgsgdssgsgsdg'), Tile('fsdf'), Tile('dsfsdfsdfsdsf'), Tile('sdgsdgsgdssgsgsdg'), Tile('fsdf')]
 
-while True:
-    key = input()
-    for i in range(len(list_tiles)):
-        if (count % len(list_tiles)) == i:
-            os.system('CLS')
-            num = count % len(list_tiles)
-            print(draw_tile(list_tiles, num))
-            key = ''
-    count += 1
-
+columns_tile(list_tiles, 3)
