@@ -8,6 +8,7 @@ list_tiles1 = [utilits.Tile('почему он'), utilits.Tile('аватар'), 
 list_tiles2 = [utilits.Tile('убийство в париже'), utilits.Tile('любовь и голуби'), utilits.Tile('москва слезам не верит')]
 list_tiles3 = [utilits.Tile('достать ножи'), utilits.Tile('соник'), utilits.Tile('белый клык')]
 
+print ("Нажмите Enter, чтобы переключить. Чтобы выбрать, нажмите пробел")
 while True: # вывод на консоль даты
     key = input()
     if key == ' ':
@@ -25,7 +26,6 @@ if choose_date == 1: #28.04, фильмы
         key = input()
         if key == ' ':
             choose_movie = count % len(list_tiles1)
-            print(choose_movie)
             os.system('CLS')
             break
         else:
@@ -37,7 +37,6 @@ if choose_date == 2: #29.04, фильмы
         key = input()
         if key == ' ':
             choose_movie = count % len(list_tiles2)
-            print(choose_movie)
             os.system('CLS')
             break
         else:
@@ -49,30 +48,51 @@ if choose_date == 0: #30.04, фильмы
         key = input()
         if key == ' ':
             choose_movie = count % len(list_tiles3)
-            print(choose_movie)
             os.system('CLS')
             break
         else:
             utilits.print_tile(list_tiles3, count)
         count += 1
 
-if choose_movie == 1: #зал VIP
-    hall_list = hall.number_hall(1)
-    i = utilits.columns_tile(hall_list, 10) - 1
-    print(len(hall_list[i].tile[1][5:-2]))
-    print((hall_list[i].tile[1][5:-2]))
-    print(i)
-    print(len(hall_list))
-    # print(hall.number_hall(2)[1].tile[1][5:-2])
-    
-    if hall_list[i].tile[1][5:-2] == '//':
-        print ("Место занято\n Выберете другое место")
-    else:
-        print("Вы забронировали место на сеанс. Удачного просмотра!!!")
+print ("Выберете место: \n ( [] - место свободно, // - место занято)")
 
+if choose_movie == 1: #зал VIP
+    flag = 0
+    hall_list = hall.number_hall(1)
+    while (flag == 0):
+        i = utilits.columns_tile(hall_list, 10)
+        if (hall_list[i-1].tile[1][5:-2] == '//'):
+            print("Место занято\n Выберете другое место")
+            input()
+        else:
+            print("Вы забронировали место на сеанс. Удачного просмотра!!!")
+            input()
+            flag = 1
 
 if choose_movie == 2: # зал small
-   utilits.columns_tile(hall.number_hall(2), 9)
+    flag = 0
+    hall_list = hall.number_hall(1)
+    while (flag == 0):
+        i = utilits.columns_tile(hall_list, 9)
+
+        if(hall_list[i- 1].tile[1][5:-2] == '//'):
+            print("Место занято\n Выберете другое место")
+            input()
+        else:
+            print("Вы забронировали место на сеанс. Удачного просмотра!!!")
+            input()
+            flag = 1
 
 if choose_movie == 0: # зал big
-    utilits.columns_tile(hall.number_hall(0), 18)
+    flag = 0
+    hall_list = hall.number_hall(1)
+    while (flag == 0):
+        i = utilits.columns_tile(hall_list, 18)
+
+        if (hall_list[i- 1].tile[1][5:-2] == '//'):
+            print("Место занято\n Выберете другое место")
+            input()
+        else:
+            print("Вы забронировали место на сеанс. Удачного просмотра!!!")
+            input()
+            flag=1
