@@ -8,7 +8,7 @@ class Table:
         ['films', 'holls', 'sessions', 'users']
         - 'films' : id, name, genre, time_film, description
         - 'holls' : id, name, count_seats, structure
-        - 'sessions' : id, time_start, tmie_end, id_film, id_holl, date
+        - 'sessions' : id, period, id_film, id_holl, date
         - 'users' : id, log, password
  
 
@@ -38,13 +38,12 @@ class Table:
             self.table['count_seats'] = self.table['count_seats'].astype(int)
             self.table['structure'] = self.table['structure'].astype(object)
         elif self.name == 'sessions':
-            # id, time_start, tmie_end, id_film, id_holl, date
+            # id, period, id_film, id_holl, date
             self.table['id'] = self.table['id'].astype(int)
-            self.table['time_start'] = self.table['time_start'].astype(int)
-            self.table['tmie_end'] = self.table['tmie_end'].astype(int)
+            self.table['period'] = self.table['period'].astype(int)
             self.table['id_film'] = self.table['id_film'].astype(int)
             self.table['id_holl'] = self.table['id_holl'].astype(int)
-            self.table['date'] = self.table['date'].astype(int)
+            self.table['date'] = self.table['date'].astype(str)
         elif self.name == 'users':
             # id, log, password
             self.table['id'] = self.table['id'].astype(int)
@@ -61,7 +60,7 @@ class Table:
             Количество колонок каждой таблице:
             - films = 5
             - holls = 4
-            - sessions = 6
+            - sessions = 5
             - users = 3
         """
         if data is None:
@@ -108,7 +107,7 @@ class Table:
             print('Ячейка не найдена')
             
     
-    def get_collection_by_dates(self, date:int) -> list[list[int]]:
+    def get_collection_by_dates(self, date:str) -> list[list]:
         """По дате возврашает все сеансы из таблицы 'sessions'
         """
         if self.name == 'sessions':
