@@ -55,3 +55,4 @@ def number_hall(choose_movie):
                 list_tiles1.append(str(colums))
         list_tiles = [utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1]
         return list_tiles
+

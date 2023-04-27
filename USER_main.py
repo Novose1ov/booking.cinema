@@ -57,15 +57,18 @@ if choose_date == 0: #30.04, фильмы
         count += 1
 
 if choose_movie == 1: #зал VIP
-    utilits.columns_tile(hall.number_hall(1), 10)
-    for i in range (len(hall.number_hall(1))):
-        print(hall.number_hall(1)[i].tile[1][5:-2])
-        if hall.number_hall(1)[i].tile[i][5:-2] == '//':
-            print ("Место занято\n Выберете другое место")
-            break
-        else:
-            print("Вы забронировали место на сеанс. Удачного просмотра!!!")
-            break
+    hall_list = hall.number_hall(1)
+    i = utilits.columns_tile(hall_list, 10) - 1
+    print(len(hall_list[i].tile[1][5:-2]))
+    print((hall_list[i].tile[1][5:-2]))
+    print(i)
+    print(len(hall_list))
+    # print(hall.number_hall(2)[1].tile[1][5:-2])
+    
+    if hall_list[i].tile[1][5:-2] == '//':
+        print ("Место занято\n Выберете другое место")
+    else:
+        print("Вы забронировали место на сеанс. Удачного просмотра!!!")
 
 
 if choose_movie == 2: # зал small

@@ -66,6 +66,7 @@ def columns_tile(list_tiles, end):
                     start += 1
                 key = ''
         count += 1
+    return count
 
 def print_tile(list_tiles, count):
         for i in range(len(list_tiles)):
