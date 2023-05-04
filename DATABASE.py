@@ -1,5 +1,6 @@
 import random
 from DB.DataBase import Table
+# import utilits
 
 
 class Film:
@@ -22,6 +23,7 @@ class Hall:
         self.num_of_seats_in_row = num_of_seats_in_row
 
 
+"""
 class Cinema_post():
     def __init__(self, num_of_date:int, count_films:int):
         self.num_of_date = num_of_date
@@ -43,13 +45,14 @@ class Cinema_post():
             self.films_in_date.append(random.choice(films_list))
         for k in range(count_films):
             self.halls_in_date.append(random.choice(halls_list))
-
+"""
 
 
 
 films_list = list()
 users_list = list()
 halls_list = list()
+dates = ['28.04', '29.04', '30.04']
 
 #синема пост не трогать в csv
 cinema_post_list = list()
