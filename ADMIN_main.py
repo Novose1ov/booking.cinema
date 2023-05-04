@@ -1,4 +1,6 @@
 import DATABASE, ADMIN_menu_continue, os
+from DB.DataBase import Table
+import pandas as pd
 
 
 
@@ -90,6 +92,49 @@ def start_ADMIN_main():
                 input('Приходите ещё!')
                 break
             else:
-                menu_continue.contTinue(str((count) % len(TABS)))
+                ADMIN_menu_continue.contTinue(str((count) % len(TABS)))
                 continue
-        # функция обновления списков из DataBase в csv формат
+        
+        films_list = DATABASE.films_list
+        halls_list = DATABASE.halls_list
+        users_list = DATABASE.users_list
+        
+        for name in ['films', 'holls', 'users']:
+            table = Table(name)
+            if name == 'films':
+                outside(name, films_list)
+                for i, tb_obj in enumerate(films_list):
+                    if not table.is_row_in_table([i, tb_obj.name, tb_obj.style, float(tb_obj.period), '-']):
+                        table.append([i, tb_obj.name, tb_obj.style, float(tb_obj.period), '-'])
+                        
+            elif name == 'holls':
+                outside(name, halls_list)
+                for i, tb_obj in enumerate(halls_list):
+                    if not table.is_row_in_table([i, tb_obj.name, int(tb_obj.num_of_rows), int(tb_obj.num_of_seats_in_row)]):
+                        table.append([i, tb_obj.name, int(tb_obj.num_of_rows), int(tb_obj.num_of_seats_in_row)])
+                        
+            elif name == 'users':
+                outside(name, users_list)
+                for i, tb_obj in enumerate(users_list):
+                    if not table.is_row_in_table([i, str(tb_obj.login), str(tb_obj.password)]):
+                        table.append([i, str(tb_obj.login), str(tb_obj.password)])
+
+
+def outside(name, objects):
+    table = pd.read_csv(os.path.abspath(f'{name}.csv'), sep=',')
+    objects_list = []
+    if name != 'users':
+        for obj in objects:
+            objects_list.append(obj.name)
+        for t in list(table['name']):
+            if t not in objects_list:
+                table.drop(table[table['name'] == t].index, axis=0, inplace=True)
+    else:
+        for obj in objects:
+            objects_list.append(obj.login)
+        
+        for t in list(table['log']):
+            input((t, list(table['log'])))
+            if t not in objects_list:
+                table.drop(table[table['log'] == t].index, axis=0, inplace=True)
+    table.to_csv(os.path.abspath(f'{name}.csv'), index=False)

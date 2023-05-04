@@ -135,13 +135,14 @@ def contTinue(choice):
             '┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓')
 
         if len(DATABASE.films_list) > 0:
+            put = input('┃    Какой фильм нужно удалить? ')
+            flag = False
             for object_film in DATABASE.films_list:
-                if object_film.name == input('┃    Какой фильм нужно удалить? '):
+                if object_film.name == put:
+                    flag = True
                     DATABASE.films_list.remove(object_film)
-                else:
-                    input('┃    ERROR: Данного фильма нет в базе данных.')
-        else:
-            input('┃    ERROR: Данного фильма нет в базе данных.')
+            if not(flag):            
+                input('┃    ERROR: Данного фильма нет в базе данных.')
 
 
     # Удалить кинозал из БД
@@ -150,13 +151,14 @@ def contTinue(choice):
             '┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓')
 
         if len(DATABASE.halls_list) > 0:
+            put = input('Какой зал нужно удалить? ')
+            flag = False
             for object_hall in DATABASE.halls_list:
-                if object_hall.name == input('Какой зал нужно удалить? '):
+                if object_hall.name == put:
+                    flag = True
                     DATABASE.halls_list.remove(object_hall)
-                else:
-                    input('┃    ERROR: Данного зала нет в базе данных.')
-        else:
-            input('┃    ERROR: Данного зала нет в базе данных.')
+            if not(flag):
+                input('┃    ERROR: Данного зала нет в базе данных.')
 
 
     # Редактировать Киноафишу

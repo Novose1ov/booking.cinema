@@ -21,7 +21,6 @@ while True:
     else:
         user_object = DATABASE.User(l, p)
         DATABASE.users_list.append(user_object)
-        start_USER_main()
 ######################################################################################################
 
 

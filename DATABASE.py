@@ -1,4 +1,6 @@
 import random
+from DB.DataBase import Table
+
 
 class Film:
     def __init__(self, name:str, style:str, period:int):
@@ -54,18 +56,15 @@ cinema_post_list = list()
 
 
 
-# добавление из таблицы
-data_film1 = Film('Соник', 'Мультфильм', '140')
-data_film2 = Film('Фиксики', 'Фантастика', '120')
-
-data_hall1 = Hall('Малый', '4', '5')
-data_hall2 = Hall('Средний',  '5', '6')
-
-
-films_list.append(data_film1)
-films_list.append(data_film2)
-halls_list.append(data_hall1)
-halls_list.append(data_hall2)
+for tb in ['films', 'holls', 'users']:
+    table = Table(tb).get_collection_by_index()
+    for row in table:
+        if tb == 'films':
+            films_list.append(Film(str(row[1]), str(row[2]), str(row[3])))
+        elif tb == 'holls':
+            halls_list.append(Hall(str(row[1]), str(row[2]), str(row[3])))
+        elif tb == 'users':
+            users_list.append(User(str(row[1]), str(row[2])))
 
 
 
