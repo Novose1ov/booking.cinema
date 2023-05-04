@@ -90,6 +90,6 @@ def start_ADMIN_main():
                 input('Приходите ещё!')
                 break
             else:
-                menu_continue.contTinue(str((count) % len(TABS)))
+                ADMIN_menu_continue.contTinue(str((count) % len(TABS)))
                 continue
         # функция обновления списков из DataBase в csv формат
