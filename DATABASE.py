@@ -43,9 +43,32 @@ class Cinema_post():
             self.halls_in_date.append(random.choice(halls_list))
 
 
+
+
 films_list = list()
 users_list = list()
 halls_list = list()
+
+#синема пост не трогать в csv
 cinema_post_list = list()
+
+
+
+# добавление из таблицы
+data_film1 = Film('Соник', 'Мультфильм', '140')
+data_film2 = Film('Фиксики', 'Фантастика', '120')
+
+data_hall1 = Hall('Малый', '4', '5')
+data_hall2 = Hall('Средний',  '5', '6')
+
+
+films_list.append(data_film1)
+films_list.append(data_film2)
+halls_list.append(data_hall1)
+halls_list.append(data_hall2)
+
+
+
+
 
 

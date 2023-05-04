@@ -1,6 +1,5 @@
 import os, DATABASE
 from ADMIN_main import start_ADMIN_main
-from USER_main import start_USER_main
 ######################################################################################################
 while True:
     os.system('CLS')
