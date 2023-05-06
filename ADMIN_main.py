@@ -1,7 +1,7 @@
 import DATABASE
 import ADMIN_menu_continue
 import os
-from DB.DataBase import Table
+from DBase import Table
 import pandas as pd
 
 
@@ -56,6 +56,29 @@ class authors():
         space_before = int( (COLS + 1 - len(s)) / 2)
         space_after = int(COLS + 1 - space_before - len(s))
         return ('\033[44m\033[37m\033[1m '*space_before) + (s) + (' '*space_after) + ('\033[0m')
+
+
+
+def outside(name, objects):
+    table = pd.read_csv(os.path.abspath(f'{name}.csv'), sep=',')
+    objects_list = []
+    if name != 'users':
+        for obj in objects:
+            objects_list.append(obj.name)
+        for t in list(table['name']):
+            if t not in objects_list:
+                table.drop(table[table['name'] == t].index, axis=0, inplace=True)
+    else:
+        for obj in objects:
+            objects_list.append(obj.login)
+
+        for t in list(table['log']):
+            input((t, list(table['log'])))
+            if t not in objects_list:
+                table.drop(table[table['log'] == t].index, axis=0, inplace=True)
+    table.to_csv(os.path.abspath(f'{name}.csv'), index=False)
+
+
 
 def start_ADMIN_main():
 
@@ -124,21 +147,3 @@ def start_ADMIN_main():
                     if not table.is_row_in_table([i, str(tb_obj.login), str(tb_obj.password)]):
                         table.append([i, str(tb_obj.login), str(tb_obj.password)])
 
-    def outside(name, objects):
-        table = pd.read_csv(os.path.abspath(f'{name}.csv'), sep=',')
-        objects_list = []
-        if name != 'users':
-            for obj in objects:
-                objects_list.append(obj.name)
-            for t in list(table['name']):
-                if t not in objects_list:
-                    table.drop(table[table['name'] == t].index, axis=0, inplace=True)
-        else:
-            for obj in objects:
-                objects_list.append(obj.login)
-
-            for t in list(table['log']):
-                input((t, list(table['log'])))
-                if t not in objects_list:
-                    table.drop(table[table['log'] == t].index, axis=0, inplace=True)
-        table.to_csv(os.path.abspath(f'{name}.csv'), index=False)

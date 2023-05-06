@@ -14,7 +14,7 @@ class User:
     def choosing_date(self):
         count = 0
         while True:  # вывод на консоль даты
-            utilits.print_tile(DATABASE.date_tiles, count)
+            USER_utilits.print_tile(DATABASE.date_tiles, count)
             key = input()
 
             if key == ' ':
@@ -25,14 +25,14 @@ class User:
 
 
     def choose_film(self, choose_date:int):
-        flms_f_28 = [utilits.Tile(i) for i in DATABASE.films_for_28]
-        flms_f_29 = [utilits.Tile(i) for i in DATABASE.films_for_29]
-        flms_f_30 = [utilits.Tile(i) for i in DATABASE.films_for_30]
+        flms_f_28 = [USER_utilits.Tile(i) for i in DATABASE.films_for_28]
+        flms_f_29 = [USER_utilits.Tile(i) for i in DATABASE.films_for_29]
+        flms_f_30 = [USER_utilits.Tile(i) for i in DATABASE.films_for_30]
 
         count = 0
         if choose_date == 0:  # 28.04, фильмы
             while True:
-                utilits.print_tile(flms_f_28, count)
+                USER_utilits.print_tile(flms_f_28, count)
                 key = input()
 
                 if key == ' ':
@@ -44,7 +44,7 @@ class User:
 
         elif choose_date == 1: #29.04, фильмы
             while True:
-                utilits.print_tile(flms_f_29, count)
+                USER_utilits.print_tile(flms_f_29, count)
                 key = input()
 
                 if key == ' ':
@@ -56,7 +56,7 @@ class User:
 
         elif choose_date == 2: #30.04, фильмы
             while True:
-                utilits.print_tile(flms_f_30, count)
+                USER_utilits.print_tile(flms_f_30, count)
                 key = input()
 
                 if key == ' ':
@@ -78,42 +78,42 @@ class User:
 
         if H == 'VIP': #зал VIP
             flag = 0
-            hall_list, m = hall.number_hall(H)
+            hall_list, m = USER_hall.number_hall(H)
             while (flag == 0):
-                i, ost = utilits.columns_tile(hall_list, m)
+                i, ost = USER_utilits.columns_tile(hall_list, m)
 
                 if (hall_list[i-1].tile[1][5:-2] == '//'):
                     input("Место занято\n Выберете другое место")
                 else:
                     input("Вы забронировали место на сеанс. Удачного просмотра!!!")
-                    hall.matr[ost].is_taking == True
+                    USER_hall.matr[0][ost-1].is_taking == True
 
 
         elif H == 'Малый': # зал small
             flag = 0
-            hall_list, m = hall.number_hall(H)
+            hall_list, m = USER_hall.number_hall(H)
             while (flag == 0):
-                i, ost = utilits.columns_tile(hall_list, m)
+                i, ost = USER_utilits.columns_tile(hall_list, m)
 
                 if(hall_list[i-1].tile[1][5:-2] == '//'):
                     input("Место занято\n Выберете другое место")
                 else:
                     input("Вы забронировали место на сеанс. Удачного просмотра!!!")
-                    hall.matr[ost].is_taking == True
+                    USER_hall.matr[0][ost-1].is_taking == True
 
 
         elif H == 'Большой': # зал big
             flag = 0
-            hall_list, m = hall.number_hall(H)
+            hall_list, m = USER_hall.number_hall(H)
 
             while (flag == 0):
-                i, ost = utilits.columns_tile(hall_list, m)
+                i, ost = USER_utilits.columns_tile(hall_list, m)
 
                 if (hall_list[i-1].tile[1][5:-2] == '//'):
                     input("Место занято\n Выберете другое место")
                 else:
                     input("Вы забронировали место на сеанс. Удачного просмотра!!!")
-                    hall.matr[ost].is_taking == True
+                    USER_hall.matr[0][ost-1].is_taking == True
 
 
 

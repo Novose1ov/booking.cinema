@@ -1,5 +1,5 @@
 import random
-from DB.DataBase import Table
+from DBase import Table
 import USER_utilits
 
 class Film:
@@ -76,43 +76,6 @@ films_for_30 = {'Достать ножи':'Малый',
 cinema_post_list.append(films_for_28)
 cinema_post_list.append(films_for_29)
 cinema_post_list.append(films_for_30)
-
-
-# добавление из таблицы
-data_film1 = Film('Соник', 'Мультфильм', '140')
-data_film2 = Film('Фиксики', 'Фантастика', '120')
-data_film3 = Film('Почему он', 'Мелодрама', '125')
-data_film4 = Film('Аватар', 'Фантастика', '135')
-data_film5 = Film('Шрэк 2', 'Мультфильм', '110')
-data_film6 = Film('Убийство в Париже', 'Детектив', '145')
-data_film7 = Film('Любовь и голуби', 'Драма', '115')
-data_film8 = Film('Москва слезам не верит', 'Комедия', '120')
-data_film9 = Film('Достать ножи', 'Ужасы', '130')
-data_film10 = Film('Белый клык', 'Приключения', '125')
-
-
-data_hall1 = Hall('VIP', '4', '4')
-data_hall2 = Hall('Малый', '3', '3')
-data_hall3 = Hall('Большой', '5', '5')
-
-
-
-films_list.append(data_film1)
-films_list.append(data_film2)
-films_list.append(data_film3)
-films_list.append(data_film4)
-films_list.append(data_film5)
-films_list.append(data_film6)
-films_list.append(data_film7)
-films_list.append(data_film8)
-films_list.append(data_film9)
-films_list.append(data_film10)
-
-
-
-halls_list.append(data_hall1)
-halls_list.append(data_hall2)
-halls_list.append(data_hall3)
 
 
 

@@ -7,8 +7,7 @@ class Tile:
         self.text = text
         self.flag = False
         self.create_tile()
-        
-        
+
     def create_tile(self):
         length = len(self.text)
         if self.flag:

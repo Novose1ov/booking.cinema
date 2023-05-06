@@ -31,36 +31,36 @@ def name_hall(n, m): #создаем список списков, в котор�
 def number_hall(H):
 
     if H == 'VIP':
-        n = DATABASE.data_hall1.num_of_rows
-        m = DATABASE.data_hall1.num_of_seats_in_row
+        n = int(DATABASE.data_hall1.num_of_rows)
+        m = int(DATABASE.data_hall1.num_of_seats_in_row)
         name_hall(n,m)
         list_tiles1 = []
         for rows in matr:
             for colums in rows:
                 list_tiles1.append(str(colums))
-        list_tiles = [utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1] #делаем из двумерного массива список
+        list_tiles = [USER_utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1] #делаем из двумерного массива список
         return list_tiles, m
 
     elif H == 'Малый':
-        n = DATABASE.data_hall2.num_of_rows
-        m = DATABASE.data_hall2.num_of_seats_in_row
+        n = int(DATABASE.data_hall2.num_of_rows)
+        m = int(DATABASE.data_hall2.num_of_seats_in_row)
         name_hall(n, m)
         list_tiles1 = []
         for rows in matr:
             for colums in rows:
                 list_tiles1.append(str(colums))
-        list_tiles = [utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1]
+        list_tiles = [USER_utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1]
         return list_tiles, m
 
-    elif H == 'Большой':
-        n = DATABASE.data_hall3.num_of_rows
-        m = DATABASE.data_hall2.num_of_seats_in_row
+    elif H == 'Средний':
+        n = int(DATABASE.data_hall3.num_of_rows)
+        m = int(DATABASE.data_hall2.num_of_seats_in_row)
         name_hall(n, m)
         list_tiles1 = []
         new_list = []
         for rows in matr:
             for colums in rows:
                 list_tiles1.append(str(colums))
-        list_tiles = [utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1]
+        list_tiles = [USER_utilits.Tile(element_list_tiles1) for element_list_tiles1 in list_tiles1]
         return list_tiles, m
 
