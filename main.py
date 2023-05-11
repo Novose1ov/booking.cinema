@@ -7,6 +7,7 @@ from USER_main import start_USER_main
 from random import randint
 import time
 
+
 os.system('CLS')
 for i in range(1, 14):
     print('\n' * 15)

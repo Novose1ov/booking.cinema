@@ -3,6 +3,8 @@ from DBase import Table
 import USER_utilits
 
 class Film:
+    def __str__(self):
+        print(self.name)
     def __init__(self, name:str, style:str, period:int):
         self.name = name
         self.style = style
@@ -10,12 +12,16 @@ class Film:
 
 
 class User:
+    def __str__(self):
+        print(self.login, self.password)
     def __init__(self, login:str, password:str):
         self.login = login
         self.password = password
 
 
 class Hall:
+    def __str__(self):
+        print(self.name)
     def __init__(self, name:str, num_of_rows:int, num_of_seats_in_row:int):
         self.name = name
         self.num_of_rows = num_of_rows

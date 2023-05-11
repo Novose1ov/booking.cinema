@@ -41,10 +41,6 @@ def draw_tile(list_tiles, num=None, end=18):
 def columns_tile(list_tiles, end):
     count = 0
     while True:
-        key = input()
-        if key == ' ':
-            os.system('CLS')
-            break
         for i in range(len(list_tiles)):
             if (count % len(list_tiles)) == i:
                 os.system('CLS')
@@ -65,7 +61,24 @@ def columns_tile(list_tiles, end):
                         break
                     start += 1
                 key = ''
+
+        key = input()
+
+        if key == ' ':
+            if list_tiles[count % len(list_tiles)].text == '//':
+                input('[ERROR]: Данное место уже забронировано. Пожалуйста, выберите другое свободное место. ')
+                continue
+            elif list_tiles[count % len(list_tiles)].text == '[]':
+                input('Вы успешно забронировали место!')
+                os.system('CLS')
+                break
+            else:
+                print('count % len(list_tiles) = ', count % len(list_tiles))
+                print('list_tiles[count % len(list_tiles)] = ', list_tiles[count % len(list_tiles)])
+                print('list_tiles[count % len(list_tiles)].text = ', list_tiles[count % len(list_tiles)].text)
+
         count += 1
+
     return count, num
 
 def print_tile(list_tiles, count):

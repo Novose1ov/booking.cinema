@@ -11,7 +11,7 @@ class Table:
         - 'holls' : id, name, row, col
         - 'sessions' : id, period, id_film, id_holl, date
         - 'users' : id, log, password
- 
+
 
         Args:
             name (str): Название таблицы, с которой мы хотим работать
@@ -20,7 +20,7 @@ class Table:
         if name not in ['films', 'holls', 'sessions', 'users']:
             raise ValueError ('DataBaseError. Not found name of table.')
         self.name = name
-        
+
 
     def astypeTable(self) -> None:
         """Функция для правильной типизации данных
@@ -45,6 +45,7 @@ class Table:
             self.table['id_film'] = self.table['id_film'].astype(int)
             self.table['id_holl'] = self.table['id_holl'].astype(int)
             self.table['date'] = self.table['date'].astype(str)
+            self.table['seats'] = self.table['seats'].astype(str)
         elif self.name == 'users':
             # id, log, password
             self.table['id'] = self.table['id'].astype(int)
@@ -146,8 +147,11 @@ class Table:
             if list(self.table['log']) == []:
                 return False
             return True if (self.table['log'] == data[1]).max() else False
-        
-        
-        
+
+
+
+
+
+
 if __name__ == '__main__':
     pass

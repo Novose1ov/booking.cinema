@@ -1,4 +1,6 @@
 import os
+
+import DBase
 import USER_utilits
 import USER_hall
 import DATABASE
@@ -35,7 +37,7 @@ class User:
                 if key == ' ':
                     choose_movie = count % len(flms_f_28)
                     os.system('CLS')
-                    return (choose_movie)
+                    return (flms_f_28[choose_movie].text)
                 count += 1
 
 
@@ -47,7 +49,7 @@ class User:
                 if key == ' ':
                     choose_movie = count % len(flms_f_29)
                     os.system('CLS')
-                    return (choose_movie)
+                    return (flms_f_29[choose_movie].text)
                 count += 1
 
 
@@ -59,73 +61,47 @@ class User:
                 if key == ' ':
                     choose_movie = count % len(flms_f_30)
                     os.system('CLS')
-                    return (choose_movie)
+                    return (flms_f_30[choose_movie].text)
                 count += 1
 
     def choosing_seat(self, choose_date: int, choose_movie: int):
-        L = [DATABASE.films_for_28, DATABASE.films_for_29, DATABASE.films_for_30][choose_date]
+        spi = [DATABASE.films_for_28,DATABASE.films_for_29,DATABASE.films_for_30]
+        tbl = DBase.Table('sessions')
 
-        count = 0
-        for i in L:
-            if count == choose_movie:
-                H = L[i]
-            count += 1
+        num = None
 
-        if H.name == 'VIP':  # зал VIP
-            hall_list = []
-            hall_list, m = USER_hall.number_hall(H)
-            flag = 0
-            while (flag == 0):
-                i, ost = USER_utilits.columns_tile(hall_list, m)
+        for y in range(15):
+            if str(tbl.get_element(id = y, coulumn = 4)) == DATABASE.dates[choose_date] and \
+                    tbl.get_element(id=y, coulumn=3) == (spi[choose_date][choose_movie]).name and \
+                    tbl.get_element(id=y, coulumn=2) == choose_movie:
 
-                if (hall_list[i - 1].tile[1][5:-2] == '//'):
-                    input("Место занято\n Выберете другое место")
+                res = str(tbl.get_element(id=y, coulumn=5)[1:-1])
+
+                list_seats = [str(x) for x in res]
+                seats = []
+                for i in list_seats:
+                    if i == '0':
+                        seats.append('[]')
+                    else:
+                        seats.append('//')
+
+                count = 0
+
+                if (spi[choose_date][choose_movie]).name == 'Средний':
+                    count = 5
+                elif (spi[choose_date][choose_movie]).name == 'VIP':
+                    count = 4
                 else:
-                    input("Вы забронировали место на сеанс. Удачного просмотра!!!")
-                    flag = 1
+                    count = 3
 
+                list_tiles = [USER_utilits.Tile(element) for element in seats]
 
-        elif H.name == 'Малый':  # зал small
-            hall_list = []
-            hall_list, m = USER_hall.number_hall(H)
-            flag = 0
-            while (flag == 0):
-                i, ost = USER_utilits.columns_tile(hall_list, m)
+                result, num = USER_utilits.columns_tile(list_tiles, int(count))
 
-                if (hall_list[i - 1].tile[1][5:-2] == '//'):
-                    input("Место занято\n Выберете другое место")
-                else:
-                    input("Вы забронировали место на сеанс. Удачного просмотра!!!")
-                    flag = 1
+                print(result)
 
-
-
-        elif H.name == 'Средний':  # зал big
-            hall_list = []
-            hall_list, m = USER_hall.number_hall(H)
-            flag = 0
-            while (flag == 0):
-                i, ost = USER_utilits.columns_tile(hall_list, m)
-
-                if (hall_list[i - 1].tile[1][5:-2] == '//'):
-                    input("Место занято\n Выберете другое место")
-                else:
-                    input("Вы забронировали место на сеанс. Удачного просмотра!!!")
-                    flag = 1
-        else:
-            print('[ERROR]')
-
-
-
-
-
-
-
-
-
-
-
-
+                res_seats = '(' + res[:num] + '1' + res[num + 1:] + ')'
+                tbl.set_element(id=y, coulumn=5, data = res_seats)
 
 
 
@@ -133,4 +109,17 @@ def start_USER_main():
     user1 = User()
     ch_date = user1.choosing_date()
     ch_movie = user1.choose_film(ch_date)
-    ch_seat = user1.choosing_seat(ch_date, ch_movie)
+    user1.choosing_seat(ch_date, ch_movie)
+
+
+
+
+
+
+
+
+
+
+
+
+
