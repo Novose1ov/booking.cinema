@@ -20,6 +20,7 @@ class Hall:
         self.name = name
         self.num_of_rows = num_of_rows
         self.num_of_seats_in_row = num_of_seats_in_row
+        seats = [['[]'*num_of_seats_in_row]*num_of_rows]
 
 """
 class Cinema_post():
@@ -50,32 +51,35 @@ class Cinema_post():
 films_list = list()
 users_list = list()
 halls_list = list()
+
+h1 = Hall('Малый', 3, 3)
+h2 = Hall('VIP', 4, 4)
+h3 = Hall('Средний', 5, 5)
+
+halls_list.append(h1)
+halls_list.append(h2)
+halls_list.append(h3)
+
 dates = ['28.04', '29.04', '30.04']
 
-#синема пост не трогать в csv
-cinema_post_list = list()
 
-films_for_28 = {'Соник':'Средний',
-                'Москва слезам не верит':'VIP',
-                'Шрэк 2':'Средний',
-                'Аватар':'Малый',
-                'Белый клык':'Малый'}
+films_for_28 = {'Соник':halls_list[2],
+                'Москва слезам не верит':halls_list[1],
+                'Шрэк 2':halls_list[2],
+                'Аватар':halls_list[0],
+                'Белый клык':halls_list[0]}
 
-films_for_29 = {'Фиксики':'VIP',
-                'Почему он':'Средний',
-                'Убийство в Париже':'VIP',
-                'Достать ножи':'Малый',
-                'Шрэк 2':'Средний'}
+films_for_29 = {'Фиксики':halls_list[1],
+                'Почему он':halls_list[2],
+                'Убийство в Париже':halls_list[1],
+                'Достать ножи':halls_list[0],
+                'Шрэк 2':halls_list[2]}
 
-films_for_30 = {'Достать ножи':'Малый',
-                'Аватар':'Средний',
-                'Белый клык':'Малый',
-                'Шрэк 2':'VIP',
-                'Фиксики':'VIP'}
-
-cinema_post_list.append(films_for_28)
-cinema_post_list.append(films_for_29)
-cinema_post_list.append(films_for_30)
+films_for_30 = {'Достать ножи':halls_list[0],
+                'Аватар':halls_list[2],
+                'Белый клык':halls_list[0],
+                'Шрэк 2':halls_list[1],
+                'Фиксики':halls_list[1]}
 
 
 
