@@ -13,14 +13,14 @@ def contTinue(choice):
 
                 if len(DATABASE.users_list) == 1:
                     print('┃    ┏' + '━' * (max_len_stroke + 5) + '┓' + ' ' * (156 - 13 - max_len_stroke)+'┃')
-                    print('┃    ┃' + ' ' + user.login + ' ', end='')
-                    print('┃' + ' ' + user.password + ' ' + '┃', end='')
+                    print('┃    ┃' + ' ' + str(user.login) + ' ', end='')
+                    print('┃' + ' ' + str(user.password) + ' ' + '┃', end='')
                     print(' ' * (156 - 13 - max_len_stroke)+'┃')
 
                 elif len(DATABASE.users_list) > 1:
                     print('┃    ┏' + '━' * (max_len_stroke + 5) + '┓' + ' ' * (156 - 13 - max_len_stroke)+'┃')
-                    print('┃    ┃' + ' ' + user.login + ' ', end='')
-                    print('┃' + ' ' + user.password + ' ' + '┃', end='')
+                    print('┃    ┃' + ' ' + str(user.login) + ' ', end='')
+                    print('┃' + ' ' + str(user.password) + ' ' + '┃', end='')
                     print(' ' * (156 - 13 - max_len_stroke)+'┃')
 
             print('┃    ┗' + '━' * (max_len_stroke + 5) + '┛' + ' ' * (156 - 13 - max_len_stroke)+'┃')
@@ -40,16 +40,16 @@ def contTinue(choice):
 
                 if len(DATABASE.films_list) == 1:
                     print('┃    ┏' + '━' * (max_len_stroke + 8) + '┓' + ' '*(156-16-max_len_stroke)+'┃')
-                    print('┃    ┃' + ' ' + film.name + ' ', end='')
-                    print('┃' + ' ' + film.style + ' ', end='')
-                    print('┃' + ' ' + film.period + ' ' + '┃', end ='')
+                    print('┃    ┃' + ' ' + str(film.name) + ' ', end='')
+                    print('┃' + ' ' + str(film.style) + ' ', end='')
+                    print('┃' + ' ' + str(film.period) + ' ' + '┃', end ='')
                     print(' '*(156-16-max_len_stroke)+'┃')
 
                 elif len(DATABASE.films_list) > 1:
                     print('┃    ┏' + '━' * (max_len_stroke + 8) + '┓' + ' '*(156-16-max_len_stroke)+'┃')
-                    print('┃    ┃' + ' ' + film.name + ' ', end='')
-                    print('┃' + ' ' + film.style + ' ', end='')
-                    print('┃' + ' ' + film.period + ' ' + '┃', end='')
+                    print('┃    ┃' + ' ' + str(film.name) + ' ', end='')
+                    print('┃' + ' ' + str(film.style) + ' ', end='')
+                    print('┃' + ' ' + str(film.period) + ' ' + '┃', end='')
                     print(' ' * (156-16-max_len_stroke)+'┃')
 
             print('┃    ┗' + '━' * (max_len_stroke + 8) + '┛' + ' '*(156-16-max_len_stroke)+'┃')
@@ -69,16 +69,16 @@ def contTinue(choice):
 
                 if len(DATABASE.halls_list) == 1:
                     print('┃    ┏'+'━' * (max_len_stroke + 8) + '┓' + ' ' * (156 - 16 - max_len_stroke) + '┃')
-                    print('┃    ┃'+' ' + hall.name + ' ', end='')
-                    print('┃'+' ' + hall.num_of_rows + ' ', end='')
-                    print('┃'+' ' + hall.num_of_seats_in_row + ' ' + '┃', end = '')
+                    print('┃    ┃'+' ' + str(hall.name) + ' ', end='')
+                    print('┃'+' ' + str(hall.num_of_rows) + ' ', end='')
+                    print('┃'+' ' + str(hall.num_of_seats_in_row) + ' ' + '┃', end = '')
                     print(' ' * (156 - 16 - max_len_stroke) + '┃')
 
-                elif len(DATABASE.films_list) > 1:
+                if len(DATABASE.films_list) > 0:
                     print('┃    ┏'+ '━' * (max_len_stroke + 8) + '┓' + ' ' * (156 - 16 - max_len_stroke) + '┃')
-                    print('┃    ┃' + ' ' + hall.name + ' ', end='')
-                    print('┃' + ' ' + hall.num_of_rows + ' ', end='')
-                    print('┃'+ ' ' + hall.num_of_seats_in_row + ' ' + '┃', end = '')
+                    print('┃    ┃' + ' ' + str(hall.name) + ' ', end='')
+                    print('┃' + ' ' + str(hall.num_of_rows) + ' ', end='')
+                    print('┃'+ ' ' + str(hall.num_of_seats_in_row) + ' ' + '┃', end = '')
                     print(' ' * (156 - 16 - max_len_stroke) + '┃')
             print('┃    ┗' + '━' * (max_len_stroke + 8) + '┛' + ' ' * (156 - 16 - max_len_stroke) + '┃')
             input("""┃                                                                                                                                                          ┃

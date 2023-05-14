@@ -6,7 +6,7 @@ import pandas as pd
 
 
 
-class headline():
+class Headline():
     def __init__(self):
         pass
 
@@ -17,7 +17,7 @@ class headline():
         SPACE_after = int(COLS + 1 - SPACE_before - len(HEAD))
         return (SPACE_before*'\033[44m\033[37m\033[1m ') + (HEAD) + (SPACE_after*' ') + ('\033[0m\n')
 
-class tab():
+class Tab():
     def __init__(self):
         pass
 
@@ -42,7 +42,7 @@ class tab():
                 (st) + ('\033[1m\033[37m\033[44m') + \
                  (' '*int(COLS + 1 - (int(SPACE / 2)+(LenTab)+(len(TAB)*SPACE)))) + ('\033[0m') + ('\n')
 
-class authors():
+class Authors():
     def __init__(self):
         pass
 
@@ -82,9 +82,9 @@ def outside(name, objects):
 
 def start_ADMIN_main():
 
-    hd = headline()
-    tb = tab()
-    auth = authors()
+    hd = Headline()
+    tb = Tab()
+    auth = Authors()
 
     TABS = ('Users', 'Films', 'Halls', 'Movie Poster', 'Add Film', 'Add Hall', \
             'Remove Film', 'Remove Hall', 'Edit Movie_Poster', 'Exit')

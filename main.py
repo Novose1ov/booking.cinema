@@ -145,7 +145,6 @@ while True:
         DATABASE.users_list.append(user_object)
         start_USER_main()
 
-
         # flag = 0
         # for i in DATABASE.users_list:
         #     if i.login == l & i.password == p:

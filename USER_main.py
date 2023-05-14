@@ -65,13 +65,13 @@ class User:
                 count += 1
 
     def choosing_seat(self, choose_date: int, choose_movie: int):
-        spi = [DATABASE.films_for_28,DATABASE.films_for_29,DATABASE.films_for_30]
+        spi = [DATABASE.films_for_28, DATABASE.films_for_29, DATABASE.films_for_30]
         tbl = DBase.Table('sessions')
 
         num = None
 
         for y in range(15):
-            if str(tbl.get_element(id = y, coulumn = 4)) == DATABASE.dates[choose_date] and \
+            if str(tbl.get_element(id=y, coulumn=4)) == DATABASE.dates[choose_date] and \
                     tbl.get_element(id=y, coulumn=3) == (spi[choose_date][choose_movie]).name and \
                     tbl.get_element(id=y, coulumn=2) == choose_movie:
 
@@ -101,8 +101,7 @@ class User:
                 print(result)
 
                 res_seats = '(' + res[:num] + '1' + res[num + 1:] + ')'
-                tbl.set_element(id=y, coulumn=5, data = res_seats)
-
+                tbl.set_element(id=y, coulumn=5, data=res_seats)
 
 
 def start_USER_main():
@@ -110,16 +109,3 @@ def start_USER_main():
     ch_date = user1.choosing_date()
     ch_movie = user1.choose_film(ch_date)
     user1.choosing_seat(ch_date, ch_movie)
-
-
-
-
-
-
-
-
-
-
-
-
-
